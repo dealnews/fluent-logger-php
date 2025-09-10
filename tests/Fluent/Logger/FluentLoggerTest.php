@@ -5,13 +5,13 @@ namespace FluentTests\FluentLogger;
 use Fluent\Logger;
 use Fluent\Logger\FluentLogger;
 
-class FluentLoggerTest extends \PHPUnit_Framework_TestCase
+class FluentLoggerTest extends \PHPUnit\Framework\TestCase
 {
     const TAG          = 'debug.test';
     const OBJECT_KEY   = 'hello';
     const OBJECT_VALUE = 'world';
 
-    public function tearDown()
+    public function tearDown(): void
     {
         FluentLogger::clearInstances();
     }
@@ -104,7 +104,9 @@ class FluentLoggerTest extends \PHPUnit_Framework_TestCase
 
     private function getMockOfLogger(array $method)
     {
-        return $this->getMock("Fluent\Logger\FluentLogger", array("write"), array("localhost"));
+        return $this->getMockBuilder(\Fluent\Logger\FluentLogger::class)
+                    ->onlyMethods(array("write"))
+                    ->getMock();
     }
 
     /**
@@ -164,12 +166,13 @@ class FluentLoggerTest extends \PHPUnit_Framework_TestCase
         $prop = new \ReflectionProperty("\Fluent\Logger\FluentLogger", "instances");
         $prop->setAccessible(true);
 
-        FluentLogger::open("localhost", 1191);
-        FluentLogger::open("localhost", 1192);
-        $this->assertCount(2, $prop->getValue("FluentLogger"));
+        $logger = new FluentLogger("localhost");
+        $logger::open("localhost", 1191);
+        $logger::open("localhost", 1192);
+        $this->assertCount(2, $prop->getValue($logger));
 
-        FluentLogger::clearInstances();
-        $this->assertCount(0, $prop->getValue("FluentLogger"));
+        $logger::clearInstances();
+        $this->assertCount(0, $prop->getValue($logger));
     }
 
     public function testMergeOptions()

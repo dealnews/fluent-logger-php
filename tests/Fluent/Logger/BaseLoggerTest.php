@@ -11,7 +11,7 @@ function fluentTests_FluentLogger_DummyFunction()
 {
 }
 
-class BaseLoggerTest extends \PHPUnit_Framework_TestCase
+class BaseLoggerTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * testing compatible before and after
@@ -42,10 +42,10 @@ class BaseLoggerTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider invalidErrorHandlerProvider
-     * @expectedException InvalidArgumentException
      */
     public function testRegisterInvalidErrorHandler($eh)
     {
+        $this->expectException(\InvalidArgumentException::class);
         $base = $this->getMockForAbstractClass('Fluent\Logger\FluentLogger');
         $base->registerErrorHandler($eh);
     }

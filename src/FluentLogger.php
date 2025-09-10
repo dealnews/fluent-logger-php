@@ -108,7 +108,7 @@ class FluentLogger implements LoggerInterface
     public function __construct($host = FluentLogger::DEFAULT_ADDRESS,
                                 $port = FluentLogger::DEFAULT_LISTEN_PORT,
                                 array $options = array(),
-                                PackerInterface $packer = null)
+                                ?PackerInterface $packer = null)
     {
         /* keep original host and port */
         $this->host = $host;

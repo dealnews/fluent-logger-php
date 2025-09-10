@@ -3,7 +3,7 @@ namespace FluentTests\Logger;
 
 use Fluent\Logger\Entity;
 
-class EntityTest extends \PHPUnit_Framework_TestCase
+class EntityTest extends \PHPUnit\Framework\TestCase
 {
     const TAG = "debug.test";
 

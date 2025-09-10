@@ -4,7 +4,7 @@ namespace FluentTests\Logger;
 use Fluent\Logger\Entity;
 use Fluent\Logger\JsonPacker;
 
-class JsonPackerTest extends \PHPUnit_Framework_TestCase
+class JsonPackerTest extends \PHPUnit\Framework\TestCase
 {
     const TAG           = "debug.test";
     const EXPECTED_TIME = 123456789;
@@ -12,7 +12,7 @@ class JsonPackerTest extends \PHPUnit_Framework_TestCase
     protected $time;
     protected $expected_data = array();
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->expected_data = array("abc" => "def");
     }

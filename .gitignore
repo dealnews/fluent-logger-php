@@ -2,6 +2,7 @@ builds
 .idea
 docs
 phpunit.xml
+.phpunit.result.cache
 tmp/
 *.iml
 composer.lock

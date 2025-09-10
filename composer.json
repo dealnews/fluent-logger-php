@@ -7,7 +7,7 @@
     "logging"
   ],
   "homepage": "http://github.com/fluent/fluent-logger-php",
-  "license": "Apache",
+  "license": "Apache-2.0",
   "authors": [
     {
       "name": "Shuhei Tanuma",
